@@ -78,7 +78,6 @@
 /* CTA section spacing when moved below */
 .cta-block { margin-top: 20px; position: relative; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: linear-gradient(90deg, transparent, var(--surface-border), transparent); }
-.cta-block .meta-main { font-size: clamp(16px, 1.5vw, 18px); }
-.cta-block .meta-note { margin: 4px 0 0; }
-.cta-block .cta { margin-top: 16px; flex-wrap: wrap; }
-.cta-block .ticker { margin-top: 12px; white-space: normal; overflow-wrap: anywhere; opacity: .9; }
+.cta-block .cta { margin-top: 6px; gap: 18px; flex-wrap: wrap; }
+.cta-block .datetime { margin-top: 16px; font-family: "JetBrains Mono", monospace; color: var(--muted); font-size: 14px; }
+.cta-block .datetime strong { color: var(--text); }
