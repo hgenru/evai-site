@@ -144,6 +144,9 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 .ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
 .ticker[data-typing="true"]::after { content: '▋'; color: var(--lime); animation: blink 1s step-end infinite; margin-left: 2px; }
 @keyframes blink { 50%{opacity: 0} }
+/* Classified variant of ticker */
+.ticker.classified { color: color-mix(in oklab, var(--pulse), var(--muted) 40%); text-transform: lowercase; }
+.ticker.classified[data-typing="true"]::after { color: var(--pulse); }
 
 .section { padding: 8px 0; }
 .card { border: 1px solid var(--surface-border); padding: 16px; border-radius: 8px; background: var(--surface); }
