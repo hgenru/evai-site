@@ -78,6 +78,6 @@
 /* CTA section spacing when moved below */
 .cta-block { margin-top: 20px; position: relative; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: linear-gradient(90deg, transparent, var(--surface-border), transparent); }
-.cta-block .cta { margin-top: 6px; gap: 18px; flex-wrap: wrap; }
-.cta-block .datetime { margin-top: 16px; font-family: "JetBrains Mono", monospace; color: var(--muted); font-size: 14px; }
+.cta-block .cta { margin-top: 6px; gap: 24px; flex-wrap: wrap; }
+.cta-block .datetime { margin-top: 22px; font-family: "JetBrains Mono", monospace; color: var(--muted); font-size: 14px; }
 .cta-block .datetime strong { color: var(--text); }
