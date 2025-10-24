@@ -128,7 +128,7 @@ const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
     window.addEventListener('mousemove', onMove, { passive: true });
   
     // toggle EVIL colorway for wordmark on silhouette click
-    const fig = document.querySeleCEOr('.eve-figure');
+    const fig = document.querySelector('.eve-figure');
     fig?.addEventListener('click', () => {
       document.documentElement.classList.toggle('evil-mode');
     });
