@@ -40,10 +40,7 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(1100px 760px at 82% -18%, var(--bg-glow) 0%, transparent 62%),
-    radial-gradient(900px 640px at 8% 96%, color-mix(in oklab, var(--bg-glow), black 20%) 0%, transparent 72%),
-    var(--bg);
+  background: var(--bg);
 }
 main { display: grid; gap: 64px; }
 
@@ -148,7 +145,7 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 @keyframes blink { 50%{opacity: 0} }
 /* Classified variant of ticker */
 .ticker.classified { color: inherit; text-transform: lowercase; }
-.ticker.classified[data-typing="true"]::after { color: var(--pulse); }
+.ticker.classified[data-typing="true"]::after { color: var(--lime); }
 
 .section { padding: 8px 0; }
 .card { border: 1px solid var(--surface-border); padding: 16px; border-radius: 8px; background: var(--surface); }
