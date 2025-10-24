@@ -6,6 +6,7 @@ export default function LeafletMap() {
   let map: any;
   onMount(async () => {
     const L = await import('leaflet');
+    
     // Rough center for Yerevan; will adjust via marker.
     const center = [40.1776, 44.5126] as [number, number];
     map = L.map(el!, { zoomControl: true }).setView(center, 15);
@@ -18,7 +19,19 @@ export default function LeafletMap() {
     const approx = [40.177911, 44.494903] as [number, number];
     const marker = L.marker(approx, {
       title: 'Ереван, ул. Лусинянц, 2 — частный театр «Артен»'
-    }).addTo(map);
+      
+    });
+    try {
+      const pin = (L as any).divIcon({
+        className: 'ev-pin',
+        html: '<div class="ev-pin-dot"></div>',
+        iconSize: [18, 18],
+        iconAnchor: [9, 18],
+      });
+      marker.setIcon(pin);
+    } catch {}
+    
+    marker.addTo(map);
     marker.bindPopup('Ереван, ул. Лусинянц, 2 — частный театр «Артен»');
     map.setView(approx, 17);
   });
