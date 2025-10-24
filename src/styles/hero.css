@@ -79,5 +79,10 @@
 .cta-block { margin-top: 20px; position: relative; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: linear-gradient(90deg, transparent, var(--surface-border), transparent); }
 .cta-block .cta { display: flex; margin-top: 6px; gap: 28px; flex-wrap: wrap; }
+.cta-block .cta > .btn { display: inline-flex; }
+@media (max-width: 560px) {
+  .cta-block .cta { gap: 12px; }
+  .cta-block .datetime { margin-top: 16px; }
+}
 .cta-block .datetime { margin-top: 22px; font-family: "JetBrains Mono", monospace; color: var(--muted); font-size: 14px; }
 .cta-block .datetime strong { color: var(--text); }

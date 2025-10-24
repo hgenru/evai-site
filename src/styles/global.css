@@ -140,6 +140,10 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 .btn.secondary { --bgc: var(--pulse); }
 @keyframes btn-sheen { 0% { background-position: 0% 50% } 100% { background-position: 100% 50% } }
 .inline-redact { background: none; color: var(--redact); padding: 0; border-radius: 0; }
+.inline-redact[data-reveal] { position: relative; cursor: help; }
+.inline-redact[data-reveal]::after { content: attr(data-reveal); position: absolute; inset: 0; color: var(--text); opacity: 0; transition: opacity 180ms ease; }
+.inline-redact[data-reveal]:hover { color: transparent; }
+.inline-redact[data-reveal]:hover::after { opacity: 1; }
 
 .ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
 .ticker[data-typing="true"]::after { content: '▋'; color: var(--lime); animation: blink 1s step-end infinite; margin-left: 2px; }
