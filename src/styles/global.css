@@ -139,13 +139,13 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 .btn:focus-visible { animation: btn-sheen 1.2s linear infinite; }
 .btn.secondary { --bgc: var(--pulse); }
 @keyframes btn-sheen { 0% { background-position: 0% 50% } 100% { background-position: 100% 50% } }
-.inline-redact { background: color-mix(in oklab, var(--redact), transparent 80%); padding: 0 6px; border-radius: 2px; }
+.inline-redact { background: none; color: var(--redact); padding: 0; border-radius: 0; }
 
 .ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
 .ticker[data-typing="true"]::after { content: '▋'; color: var(--lime); animation: blink 1s step-end infinite; margin-left: 2px; }
 @keyframes blink { 50%{opacity: 0} }
 /* Classified variant of ticker */
-.ticker.classified { color: color-mix(in oklab, var(--pulse), var(--muted) 40%); text-transform: lowercase; }
+.ticker.classified { color: inherit; text-transform: lowercase; }
 .ticker.classified[data-typing="true"]::after { color: var(--pulse); }
 
 .section { padding: 8px 0; }
