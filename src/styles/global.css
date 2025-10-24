@@ -13,6 +13,12 @@
   --pulse: #F472B6;  /* fuchsia */
   --lime: #A3E635;
   --redact: #FF3B30;
+  /* Evil variant for wordmark on easter egg */
+  --accent-evil: #FF3B30;
+  --pulse-evil: #FF6B6B;
+  /* Active wordmark palette (overridable) */
+  --wm-accent: var(--accent);
+  --wm-pulse: var(--pulse);
 
   /* Links */
   --link: color-mix(in oklab, var(--accent), white 10%);
@@ -77,13 +83,14 @@ a:visited { color: var(--link-visited); }
 .wordmark .dot { opacity: 0.5; margin: 0 0.1em; }
 .wordmark .evil { 
   color: transparent;
-  background: linear-gradient(90deg, var(--accent), color-mix(in oklab, var(--accent), var(--pulse) 45%), var(--accent));
+  background: linear-gradient(90deg, var(--wm-accent), color-mix(in oklab, var(--wm-accent), var(--wm-pulse) 45%), var(--wm-accent));
   -webkit-background-clip: text; background-clip: text;
-  text-shadow: 0 0 12px color-mix(in oklab, var(--accent), transparent 70%);
+  text-shadow: 0 0 12px color-mix(in oklab, var(--wm-accent), transparent 70%);
   background-size: 300% 100%;
   animation: evil-sheen 3.2s linear infinite;
   will-change: background-position, filter;
 }
+html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil); }
 @keyframes evil-sheen {
   0% { background-position: 0% 50%; filter: saturate(1); }
   50% { background-position: 50% 50%; filter: saturate(1.15); }
@@ -172,6 +179,13 @@ li::marker { color: color-mix(in oklab, var(--accent), var(--pulse) 30%); }
 
 /* Accessibility */
 :focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+
+/* Location section: map + venue photo */
+.location-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; align-items: start; }
+@media (max-width: 900px) { .location-grid { grid-template-columns: 1fr; } }
+.venue-image { margin: 0; align-self: start; justify-self: center; max-width: 520px; width: 100%; }
+.venue-image img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--surface-border); object-fit: cover; }
+.venue-image figcaption { margin-top: 6px; color: var(--muted); font-size: 12px; text-align: center; }
 
 /* Silhouette image with colorful background */
 .eve-figure { position: relative; margin: 0; display: grid; place-items: center; }

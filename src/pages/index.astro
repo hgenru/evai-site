@@ -82,7 +82,15 @@ const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
   <section id="location" class="section container">
     <h2>Локация / Карта</h2>
     <p><strong>Ереван, улица Лусинянц, 2 — частный театр «Артен»</strong><br/>Рядом с «Долма Молл», ~5 минут пешком.</p>
-    <LeafletMap client:load />
+    <div class="location-grid">
+      <div class="map-col">
+        <LeafletMap client:load />
+      </div>
+      <figure class="venue-image">
+        <img src="/arten.jpg" alt="Вход в частный театр «Артен»" loading="lazy" />
+        <figcaption>Вход в «Артен» (ориентир)</figcaption>
+      </figure>
+    </div>
     <p class="muted" style="margin-top:10px">
       Ссылки: 
       <a href="https://maps.google.com/?q=Ереван, улица Лусинянц, 2" target="_blank" rel="noopener">Google Maps</a> ·
@@ -118,5 +126,11 @@ const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
       });
     }
     host?.addEventListener('mousemove', onMove, { passive: true });
+
+    // toggle EVIL colorway for wordmark on silhouette click
+    const fig = document.querySelector('.eve-figure');
+    fig?.addEventListener('click', () => {
+      document.documentElement.classList.toggle('evil-mode');
+    });
   </script>
 </Base>
