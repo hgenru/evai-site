@@ -144,8 +144,10 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 .ticker[data-typing="true"]::after { content: '▋'; color: var(--lime); animation: blink 1s step-end infinite; margin-left: 2px; }
 /* different caret colors for variants */
 .ticker.init[data-typing="true"]::after { color: var(--lime); }
-.ticker.classified[data-typing="true"]::after { color: var(--pulse); }
+.ticker.classified[data-typing="true"]::after { color: var(--redact); }
 .ticker.location[data-typing="true"]::after { color: var(--accent); }
+/* spacing for location ticker so it doesn't stick to map */
+.ticker.location { display: block; margin: 8px 0 12px; }
 @keyframes blink { 50%{opacity: 0} }
 /* Classified variant of ticker */
 .ticker.classified { color: var(--muted); text-transform: lowercase; }
