@@ -1,0 +1,84 @@
+/* Hero specific styles and geometry field */
+
+.hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; align-items: center; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+/* Pin the image to the floor of the hero */
+.hero-col.right { display: flex; align-items: flex-end; justify-content: center; }
+
+.headline-badge {
+  display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px; margin: 6px 6px 10px 0;
+  border: 1px solid var(--surface-border);
+  color: color-mix(in oklab, var(--text), var(--muted) 20%);
+  text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 700;
+  background: linear-gradient(90deg, color-mix(in oklab, var(--accent), transparent 92%), transparent);
+}
+
+.badge-row { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+
+.lead {
+  font-family: "Space Grotesk", Manrope, Inter, ui-sans-serif, system-ui;
+  font-size: clamp(30px, 6vw, 56px);
+  font-weight: 800;
+  line-height: 1.17;
+  letter-spacing: -0.01em;
+  color: transparent;
+  background: linear-gradient(90deg, var(--lead), color-mix(in oklab, var(--accent), var(--pulse) 24%));
+  -webkit-background-clip: text; background-clip: text;
+  text-shadow: 0 0 18px color-mix(in oklab, var(--accent), transparent 92%);
+  margin: 12px 0 10px;
+  text-wrap: balance;
+  background-size: 200% 100%;
+  animation: lead-pulse 6s ease-in-out infinite;
+}
+@keyframes lead-pulse { 0%{ background-position: 0% 50%; filter: saturate(1)} 50%{ background-position: 100% 50%; filter: saturate(1.2)} 100%{ background-position: 0% 50%; filter: saturate(1)} }
+
+.eve-figure { position: relative; margin: 0 0 -6px 0; display: grid; place-items: center; }
+@media (max-width: 900px) { .eve-figure { margin-bottom: -2px; } }
+.eve-figure::before,
+.eve-figure::after { content: ""; position: absolute; inset: -10% -10%; filter: blur(30px); border-radius: 50%; z-index: 0; }
+.eve-figure::before { background: conic-gradient(from 0deg, var(--accent), var(--pulse), var(--accent)); opacity: .22; animation: spin-slow 22s linear infinite; }
+.eve-figure::after  { background: radial-gradient(60% 60% at 60% 18%, color-mix(in oklab, var(--accent), transparent 74%), transparent 74%); opacity: .22; }
+.eve-vignette { position: absolute; left: -10%; right: -10%; bottom: -8%; height: 45%; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(60% 90% at 60% 20%, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 75%, rgba(0,0,0,0.55) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 80%);
+  filter: blur(22px);
+}
+.eve-figure img { width: min(280px, 46vw); height: auto; display: block; filter: drop-shadow(0 10px 30px rgba(0,0,0,.5)); position: relative; z-index: 2; }
+
+/* Exploded small geometric pieces over gradients */
+.geo-field { position: absolute; inset: 0; z-index: 1; pointer-events: none; transform: translate(var(--mx, 0px), var(--my, 0px)); }
+.piece { position: absolute; width: var(--s, 12px); height: var(--s, 12px); opacity: .9; }
+.piece.circle { border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px color-mix(in oklab, var(--accent), transparent 70%); }
+.piece.square { background: color-mix(in oklab, var(--pulse), white 8%); border-radius: 2px; box-shadow: 0 0 10px color-mix(in oklab, var(--pulse), transparent 70%); }
+.piece.diamond { background: color-mix(in oklab, var(--lime), white 4%); transform: rotate(45deg); box-shadow: 0 0 10px color-mix(in oklab, var(--lime), transparent 70%); }
+.piece.tri { background: color-mix(in oklab, var(--accent), var(--pulse) 40%); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+
+/* Positions and micro-animations */
+.geo-field .piece:nth-child(1)  { top: 6%;  left: 18%; --s: 10px; animation: floatSoft1 13s ease-in-out infinite; }
+.geo-field .piece:nth-child(2)  { top: 18%; left: 52%; --s: 14px; animation: floatSoft2 15s ease-in-out infinite; }
+.geo-field .piece:nth-child(3)  { top: 34%; left: 12%; --s: 12px; animation: floatSoft3 17s ease-in-out infinite; }
+.geo-field .piece:nth-child(4)  { top: 12%; left: 78%; --s: 11px; animation: floatSoft4 16s ease-in-out infinite; }
+.geo-field .piece:nth-child(5)  { top: 46%; left: 68%; --s: 18px; animation: floatSoft2 20s ease-in-out infinite; }
+.geo-field .piece:nth-child(6)  { top: 60%; left: 20%; --s: 13px; animation: floatSoft1 18s ease-in-out infinite; }
+.geo-field .piece:nth-child(7)  { top: 70%; left: 58%; --s: 9px;  animation: floatSoft3 14s ease-in-out infinite; }
+.geo-field .piece:nth-child(8)  { top: 22%; left: 32%; --s: 16px; animation: floatSoft4 17s ease-in-out infinite; }
+.geo-field .piece:nth-child(9)  { top: 78%; left: 40%; --s: 11px; animation: floatSoft1 21s ease-in-out infinite; }
+.geo-field .piece:nth-child(10) { top: 52%; left: 84%; --s: 15px; animation: floatSoft3 16s ease-in-out infinite; }
+.geo-field .piece:nth-child(11) { top: 30%; left: 88%; --s: 12px; animation: floatSoft2 17s ease-in-out infinite; }
+.geo-field .piece:nth-child(12) { top: 82%; left: 72%; --s: 10px; animation: floatSoft4 20s ease-in-out infinite; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes floatSoft1 { 0%{ transform: translate(-3px, 0)   rotate(0deg)    scale(1)} 50%{ transform: translate(6px, -6px)  rotate(5deg)    scale(1.08)} 100%{ transform: translate(-3px, 0)  rotate(0deg)    scale(1)} }
+@keyframes floatSoft2 { 0%{ transform: translate(2px, 2px)   rotate(0deg)    scale(1)} 50%{ transform: translate(-6px,-6px)  rotate(-4deg)   scale(1.06)} 100%{ transform: translate(2px, 2px)  rotate(0deg)    scale(1)} }
+@keyframes floatSoft3 { 0%{ transform: translate(0, 0)       rotate(0deg)    scale(1)} 50%{ transform: translate(6px, 6px)   rotate(4deg)    scale(1.05)} 100%{ transform: translate(0, 0)      rotate(0deg)    scale(1)} }
+@keyframes floatSoft4 { 0%{ transform: translate(-2px, 4px)  rotate(0deg)    scale(1)} 50%{ transform: translate(4px, -4px)   rotate(-5deg)   scale(1.07)} 100%{ transform: translate(-2px, 4px) rotate(0deg)    scale(1)} }
+
+/* CTA section spacing when moved below */
+.cta-block { margin-top: 20px; position: relative; }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: linear-gradient(90deg, transparent, var(--surface-border), transparent); }
+.cta-block .meta-main { font-size: clamp(16px, 1.5vw, 18px); }
+.cta-block .meta-note { margin: 4px 0 0; }
+.cta-block .cta { margin-top: 16px; flex-wrap: wrap; }
+.cta-block .ticker { margin-top: 12px; white-space: normal; overflow-wrap: anywhere; opacity: .9; }

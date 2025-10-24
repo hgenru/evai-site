@@ -1,0 +1,214 @@
+:root {
+  --bg: #0B0E12;
+  --bg-glow: #111827;
+  --surface: color-mix(in oklab, var(--bg), white 6%);
+  --surface-border: color-mix(in oklab, var(--text), transparent 85%);
+
+  --text: #E6E9EF;
+  --muted: #9AA3AE;
+  --h2: color-mix(in oklab, var(--text), var(--accent) 14%);
+  --lead: color-mix(in oklab, var(--text), var(--accent) 10%);
+
+  --accent: #22D3EE; /* biryuz */
+  --pulse: #F472B6;  /* fuchsia */
+  --lime: #A3E635;
+  --redact: #FF3B30;
+
+  /* Links */
+  --link: color-mix(in oklab, var(--accent), white 10%);
+  --link-hover: color-mix(in oklab, var(--pulse), white 4%);
+  --link-visited: color-mix(in oklab, var(--accent), black 10%);
+
+  /* Buttons */
+  --btn-fg: #081016;
+
+  /* Map controls */
+  --map-ctrl-bg: #0F172A;
+  --map-ctrl-border: #1F2937;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 760px at 82% -18%, var(--bg-glow) 0%, transparent 62%),
+    radial-gradient(900px 640px at 8% 96%, color-mix(in oklab, var(--bg-glow), black 20%) 0%, transparent 72%),
+    var(--bg);
+}
+main { display: grid; gap: 64px; }
+
+.container {
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+}
+
+h1, h2, h3 { font-family: "Space Grotesk", Manrope, Inter, ui-sans-serif, system-ui; }
+h1 { font-size: clamp(36px, 5.6vw, 64px); line-height: 1.05; margin: 0 0 16px; font-weight: 700; }
+h2 { font-size: clamp(24px, 3.2vw, 30px); margin: 0 0 12px; font-weight: 700; position: relative; color: var(--h2); }
+h2::after { content: ""; display: block; width: 82px; height: 2px; margin-top: 10px; background: linear-gradient(90deg, var(--accent), transparent); opacity: .75; }
+p { color: var(--text); opacity: 0.95; font-size: clamp(18px, 1.35vw, 20px); line-height: 1.7; }
+small { color: var(--muted); }
+
+/* Links */
+a { 
+  color: var(--link);
+  text-decoration-color: color-mix(in oklab, var(--link), transparent 50%);
+  text-underline-offset: 2px;
+  text-decoration-thickness: .08em;
+  transition: color 140ms ease, filter 140ms ease;
+}
+a:hover { color: var(--link-hover); text-decoration-color: currentColor; }
+a:visited { color: var(--link-visited); }
+
+.wordmark { 
+  font-family: "JetBrains Mono", monospace; 
+  letter-spacing: 0.08em; 
+  display: inline-flex; 
+  gap: 0.18em;
+  font-weight: 700;
+  font-size: clamp(40px, 6.6vw, 76px);
+  align-items: baseline;
+}
+.wordmark .char { display: inline-block; }
+.wordmark .neutral { color: var(--text); opacity: 0.85; }
+.wordmark .dot { opacity: 0.5; margin: 0 0.1em; }
+.wordmark .evil { 
+  color: transparent;
+  background: linear-gradient(90deg, var(--accent), color-mix(in oklab, var(--accent), var(--pulse) 45%), var(--accent));
+  -webkit-background-clip: text; background-clip: text;
+  text-shadow: 0 0 12px color-mix(in oklab, var(--accent), transparent 70%);
+  background-size: 300% 100%;
+  animation: evil-sheen 3.2s linear infinite;
+  will-change: background-position, filter;
+}
+@keyframes evil-sheen {
+  0% { background-position: 0% 50%; filter: saturate(1); }
+  50% { background-position: 50% 50%; filter: saturate(1.15); }
+  100% { background-position: 100% 50%; filter: saturate(1.25); }
+}
+.glitch-once .wordmark .evil { animation: tick 220ms ease-in-out 1; }
+@keyframes tick { 0%{filter: none} 30%{filter: hue-rotate(30deg) saturate(1.5)} 60%{transform: skewX(1deg)} 100%{filter: none; transform: none} }
+
+.hero { padding: 64px 0 24px; display: grid; gap: 20px; position: relative; }
+.hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+.headline-badge {
+  display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px; margin: 8px 0 10px;
+  border: 1px solid var(--surface-border);
+  color: color-mix(in oklab, var(--text), var(--muted) 20%);
+  text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 700;
+  background: linear-gradient(90deg, color-mix(in oklab, var(--accent), transparent 92%), transparent);
+}
+
+.lead { 
+  font-size: clamp(22px, 2.3vw, 28px); 
+  font-weight: 700; 
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: transparent;
+  background: linear-gradient(90deg, var(--lead), color-mix(in oklab, var(--accent), var(--pulse) 20%));
+  -webkit-background-clip: text; background-clip: text;
+  text-shadow: 0 0 18px color-mix(in oklab, var(--accent), transparent 92%);
+}
+.hero .meta { color: var(--muted); }
+.hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.btn {
+  --bgc: var(--accent);
+  --fgc: var(--btn-fg);
+  background: linear-gradient(135deg, var(--bgc) 0%, color-mix(in oklab, var(--bgc), var(--pulse) 25%) 50%, var(--bgc) 100%);
+  background-size: 200% 100%;
+  color: var(--fgc);
+  border: 0; border-radius: 4px; padding: 14px 18px;
+  letter-spacing: 0.08em; font-weight: 700; text-transform: uppercase; cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease;
+  text-decoration: none;
+}
+.btn:visited { color: var(--fgc); }
+.btn:hover { transform: translateY(-1px); filter: contrast(1.05) saturate(1.1); animation: btn-sheen 1.6s linear infinite; }
+.btn:focus-visible { animation: btn-sheen 1.2s linear infinite; }
+.btn.secondary { --bgc: var(--pulse); }
+@keyframes btn-sheen { 0% { background-position: 0% 50% } 100% { background-position: 100% 50% } }
+.inline-redact { background: color-mix(in oklab, var(--redact), transparent 80%); padding: 0 6px; border-radius: 2px; }
+
+.ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
+.ticker[data-typing="true"]::after { content: '▋'; color: var(--lime); animation: blink 1s step-end infinite; margin-left: 2px; }
+@keyframes blink { 50%{opacity: 0} }
+
+.section { padding: 8px 0; }
+.card { border: 1px solid var(--surface-border); padding: 16px; border-radius: 8px; background: var(--surface); }
+.muted { color: var(--muted); }
+
+/* Richer text blocks */
+ul { padding-left: 1.1rem; }
+li { margin: 6px 0; }
+li::marker { color: color-mix(in oklab, var(--accent), var(--pulse) 30%); }
+
+/* Clean bullets for sections */
+.bullets { list-style: disc outside; padding-left: 1.25rem; margin: 0; }
+.bullets li { margin: 8px 0; }
+.bullets li::marker { color: color-mix(in oklab, var(--accent), var(--pulse) 20%); }
+
+/* Hero subtle scan line */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+}
+
+/* hero panel removed */
+
+.footer { padding: 24px 0 64px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+
+/* Map */
+#map { height: 340px; width: 100%; border: 1px solid var(--surface-border); border-radius: 8px; overflow: hidden; }
+.leaflet-control-zoom a { background: var(--map-ctrl-bg) !important; color: var(--text) !important; border: 1px solid var(--map-ctrl-border) !important; }
+.leaflet-container { background: var(--bg) !important; }
+
+/* Accessibility */
+:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+
+/* Silhouette image with colorful background */
+.eve-figure { position: relative; margin: 0; display: grid; place-items: center; }
+.eve-figure::before,
+.eve-figure::after {
+  content: ""; position: absolute; inset: -10% -10%; filter: blur(30px); border-radius: 50%;
+}
+.eve-figure::before {
+  background: conic-gradient(from 0deg, var(--accent), var(--pulse), var(--accent));
+  opacity: .25; animation: spin-slow 18s linear infinite;
+}
+.eve-figure::after {
+  background: radial-gradient(60% 60% at 50% 40%, color-mix(in oklab, var(--accent), transparent 70%), transparent 70%);
+  opacity: .35;
+}
+.eve-figure img { width: min(360px, 70vw); height: auto; display: block; filter: drop-shadow(0 10px 30px rgba(0,0,0,.5)); }
+.eve-figure .geo { position: absolute; pointer-events: none; }
+.eve-figure .geo-ring {
+  width: clamp(180px, 28vw, 320px); height: clamp(180px, 28vw, 320px); border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent), var(--pulse), var(--accent));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 0);
+          mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 0);
+  opacity: .28; animation: spin-slow 24s linear infinite; transform: translateY(-6%);
+}
+.eve-figure .geo-rect {
+  width: clamp(140px, 22vw, 260px); height: clamp(90px, 16vw, 180px); border-radius: 18px;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--accent), transparent 50%), color-mix(in oklab, var(--pulse), transparent 50%));
+  filter: blur(8px); opacity: .25; transform: rotate(15deg) translate(12%, -8%);
+  animation: float-y 6s ease-in-out infinite alternate;
+}
+.eve-figure .geo-tri {
+  width: clamp(120px, 18vw, 180px); height: clamp(120px, 18vw, 180px);
+  background: linear-gradient(135deg, color-mix(in oklab, var(--accent), transparent 40%), color-mix(in oklab, var(--pulse), transparent 40%));
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  opacity: .22; transform: rotate(-20deg) translate(-15%, 6%);
+  animation: spin-rev 20s linear infinite;
+}
+@keyframes spin-slow { to { transform: rotate(360deg) } }
+@keyframes spin-rev { to { transform: rotate(-360deg) } }
+@keyframes float-y { from { transform: rotate(15deg) translate(12%, -8%); } to { transform: rotate(15deg) translate(12%, -4%); } }

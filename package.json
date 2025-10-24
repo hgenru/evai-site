@@ -1,0 +1,21 @@
+{
+  "name": "evai-site",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/solid-js": "^5.1.1",
+    "astro": "^5.15.1",
+    "leaflet": "^1.9.4",
+    "solid-js": "^1.9.9"
+  }
+}

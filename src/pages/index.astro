@@ -1,0 +1,122 @@
+---
+import Base from "../layouts/Base.astro";
+import LeafletMap from "../components/LeafletMap";
+import "../styles/hero.css";
+
+const headline = "Internal Pre‑Launch Party"; // бейдж‑подпись
+const lead = "Ева почти готова. Осталось сделать самое важное — встретиться.";
+const whenWhere = "31 октября, 19:00 · Ереван, ул. Лусинянц, 2 (частный театр «Артен»)";
+const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
+---
+<Base title={headline}>
+  <section class="hero container">
+    <div class="hero-grid">
+      <div class="hero-col left">
+        <h1 class="wordmark" aria-label="EVAI LLM">
+          <span class="char evil">E</span>
+          <span class="char evil">V</span>
+          <span class="char neutral">A</span>
+          <span class="char evil">I</span>
+          <span class="char neutral dot">·</span>
+          <span class="char evil">L</span>
+          <span class="char neutral">L</span>
+          <span class="char neutral">M</span>
+        </h1>
+        <div class="badge-row">
+          <span class="headline-badge">{headline}</span>
+          <span class="headline-badge">AGI</span>
+          <span class="headline-badge">HYPE</span>
+          <span class="headline-badge">BUBBLE</span>
+        </div>
+        <p class="lead">{lead}</p>
+        <div class="ticker" data-typing="true">{ticker}</div>
+        
+      </div>
+      <div class="hero-col right">
+        <figure class="eve-figure">
+          <div class="geo-field" id="geoField">
+            <div class="piece circle"></div>
+            <div class="piece square"></div>
+            <div class="piece diamond"></div>
+            <div class="piece tri"></div>
+            <div class="piece circle"></div>
+            <div class="piece square"></div>
+            <div class="piece tri"></div>
+            <div class="piece diamond"></div>
+            <div class="piece circle"></div>
+            <div class="piece square"></div>
+            <div class="piece tri"></div>
+            <div class="piece diamond"></div>
+          </div>
+          <div class="eve-vignette" aria-hidden="true"></div>
+          <img src="/siluettte.png" alt="Силуэт Евы" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container cta-block">
+    <p class="meta meta-main"><strong>{whenWhere}</strong></p>
+    <p class="meta meta-note"><small>CLASSIFIED: некоторые детали <span class="inline-redact">[████]</span> доступны только офлайн.</small></p>
+    <div class="cta">
+      <a class="btn" href="/eva_prelaunch_2025.ics" download>Добавить в календарь (.ics)</a>
+      <a class="btn secondary" href="#location">Открыть карту</a>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>О событии</h2>
+    <ul class="bullets">
+      <li>Представляем внутреннего ИИ‑ассистента <strong>Ева</strong>.</li>
+      <li>Встретимся офлайн — многие «вживую» впервые.</li>
+      <li>Корпоративная строгость × лёгкая тайна.</li>
+      <li>Ирония про «захват мира» — в хорошем смысле.</li>
+    </ul>
+  </section>
+
+  <section class="section container">
+    <h2>Дресс‑код</h2>
+    <p><strong>Corporate casual</strong> или ироничные костюмы на тему ИИ/роботов/«мирового доминирования». Комфорт важнее концепции — приходите как удобно.</p>
+  </section>
+
+  <section id="location" class="section container">
+    <h2>Локация / Карта</h2>
+    <p><strong>Ереван, улица Лусинянц, 2 — частный театр «Артен»</strong><br/>Рядом с «Долма Молл», ~5 минут пешком.</p>
+    <LeafletMap client:load />
+    <p class="muted" style="margin-top:10px">
+      Ссылки: 
+      <a href="https://maps.google.com/?q=Ереван, улица Лусинянц, 2" target="_blank" rel="noopener">Google Maps</a> ·
+      <a href="https://yandex.ru/maps/?text=Ереван, улица Лусинянц, 2" target="_blank" rel="noopener">Yandex Maps</a>
+      <br/>
+      Пешком от «Долма Молл»: 
+      <a href="https://www.google.com/maps/dir/?api=1&origin=Dolma+Mall+Yerevan&destination=%D0%95%D1%80%D0%B5%D0%B2%D0%B0%D0%BD,+%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%9B%D1%83%D1%81%D0%B8%D0%BD%D1%8F%D0%BD%D1%86,+2&travelmode=walking" target="_blank" rel="noopener">Google</a> ·
+      <a href="https://yandex.ru/maps/?rtext=Dolma%20Mall~%D0%95%D1%80%D0%B5%D0%B2%D0%B0%D0%BD,%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9B%D1%83%D1%81%D0%B8%D0%BD%D1%8F%D0%BD%D1%86,%202&rtt=pd" target="_blank" rel="noopener">Yandex</a>
+    </p>
+  </section>
+
+  <section class="section container">
+    <h2>Контакт</h2>
+    <p>вопросы: <strong><a href="https://t.me/a_plesovskikh" target="_blank" rel="noopener">t.me/a_plesovskikh</a></strong></p>
+  </section>
+
+  <footer class="footer container">
+    <code>build: eva-prelaunch-0.9.7 | scope: INTERNAL</code>
+  </footer>
+  <script>
+    // lightweight parallax for geometry field
+    const host = document.querySelector('.hero');
+    const field = document.getElementById('geoField');
+    let raf;
+    function onMove(e){
+      const rect = host.getBoundingClientRect();
+      const x = (e.clientX - rect.left)/rect.width - 0.5;
+      const y = (e.clientY - rect.top)/rect.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(()=>{
+        field?.style.setProperty('--mx', (x * 12) + 'px');
+        field?.style.setProperty('--my', (y * 12) + 'px');
+      });
+    }
+    host?.addEventListener('mousemove', onMove, { passive: true });
+  </script>
+</Base>
