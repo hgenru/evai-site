@@ -13,6 +13,7 @@
   --pulse: #F472B6;  /* fuchsia */
   --lime: #A3E635;
   --redact: #FF3B30;
+  --redact-bg: color-mix(in oklab, var(--redact), transparent 75%);
   /* Evil variant for wordmark on easter egg */
   --accent-evil: #FF3B30;
   --pulse-evil: #FF6B6B;
@@ -139,11 +140,8 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 .btn:focus-visible { animation: btn-sheen 1.2s linear infinite; }
 .btn.secondary { --bgc: var(--pulse); }
 @keyframes btn-sheen { 0% { background-position: 0% 50% } 100% { background-position: 100% 50% } }
-.inline-redact { background: none; color: var(--redact); padding: 0; border-radius: 0; }
-.inline-redact[data-reveal] { position: relative; cursor: help; }
-.inline-redact[data-reveal]::after { content: attr(data-reveal); position: absolute; inset: 0; color: var(--text); opacity: 0; transition: opacity 180ms ease; }
-.inline-redact[data-reveal]:hover { color: transparent; }
-.inline-redact[data-reveal]:hover::after { opacity: 1; }
+.inline-redact { display:inline-block; vertical-align:baseline; font-family:"JetBrains Mono", monospace; background: var(--redact-bg); color: transparent; padding: 0 4px; border-radius: 3px; transition: background 160ms ease, color 160ms ease; }
+.inline-redact:hover, .inline-redact:focus-visible { background: transparent; color: inherit; }
 
 .ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
 .ticker[data-typing="true"]::after { content: '▋'; color: var(--lime); animation: blink 1s step-end infinite; margin-left: 2px; }
