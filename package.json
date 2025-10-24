@@ -11,6 +11,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "predeploy": "npm run build",
     "deploy": "wrangler pages deploy ./dist"
   },
   "keywords": [],
