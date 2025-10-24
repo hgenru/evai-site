@@ -12,8 +12,8 @@
   --accent: #22D3EE; /* biryuz */
   --pulse: #F472B6;  /* fuchsia */
   --lime: #A3E635;
-  --redact: #FF3B30;
-  --redact-bg: color-mix(in oklab, var(--redact), transparent 75%);
+  --redact: color-mix(in oklab, var(--pulse), var(--accent) 25%);
+  --redact-bg: color-mix(in oklab, var(--redact), transparent 82%);
   /* Evil variant for wordmark on easter egg */
   --accent-evil: #FF3B30;
   --pulse-evil: #FF6B6B;
@@ -140,7 +140,7 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 .btn:focus-visible { animation: btn-sheen 1.2s linear infinite; }
 .btn.secondary { --bgc: var(--pulse); }
 @keyframes btn-sheen { 0% { background-position: 0% 50% } 100% { background-position: 100% 50% } }
-.inline-redact { display:inline-block; vertical-align:baseline; background: var(--redact-bg); color: transparent; padding: 0 4px; border-radius: 3px; transition: background 160ms ease, color 160ms ease; }
+.inline-redact { display:inline-block; vertical-align:baseline; background: var(--redact-bg); color: transparent; padding: 0 2px; border-radius: 2px; transition: background 160ms ease, color 160ms ease; }
 .inline-redact:hover, .inline-redact:focus-visible { background: transparent; color: inherit; }
 
 .ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
