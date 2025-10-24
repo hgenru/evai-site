@@ -10,8 +10,8 @@ DTSTART:20251031T150000Z
 DTEND:20251101T090000Z
 SUMMARY:EVA Pre-Launch / Internal
 LOCATION:Ереван, улица Лусинянц, 2 (частный театр «Артен»)
-DESCRIPTION:Закрытая вечеринка EVAI в честь предзапуска ассистента «Ева». Начало в 19:00, завершение в 01:00. Место: Ереван, ул. Лусинянц, 2 (частный театр «Артен»). Подробнее на сайте: https://prelaunch.evai.ai
-URL:https://prelaunch.evai.ai
+DESCRIPTION:Закрытая вечеринка EVAI в честь предзапуска ассистента «Ева». Начало в 19:00, завершение в 01:00. Место: Ереван, ул. Лусинянц, 2 (частный театр «Артен»). Подробнее на сайте: https://eva.saa.sh
+URL:https://eva.saa.sh
 BEGIN:VALARM
 TRIGGER:-PT1H
 ACTION:DISPLAY
