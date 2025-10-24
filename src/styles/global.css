@@ -94,8 +94,8 @@ a:visited { color: var(--link-visited); }
 html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil); }
 @keyframes evil-sheen {
   0% { background-position: 0% 50%; filter: saturate(1); }
-  50% { background-position: 50% 50%; filter: saturate(1.15); }
-  100% { background-position: 100% 50%; filter: saturate(1.25); }
+  50% { background-position: 60% 50%; filter: saturate(1.35); }
+  100% { background-position: 100% 50%; filter: saturate(1.5); }
 }
 .glitch-once .wordmark .evil { animation: tick 220ms ease-in-out 1; }
 @keyframes tick { 0%{filter: none} 30%{filter: hue-rotate(30deg) saturate(1.5)} 60%{transform: skewX(1deg)} 100%{filter: none; transform: none} }
@@ -140,7 +140,7 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 .btn:focus-visible { animation: btn-sheen 1.2s linear infinite; }
 .btn.secondary { --bgc: var(--pulse); }
 @keyframes btn-sheen { 0% { background-position: 0% 50% } 100% { background-position: 100% 50% } }
-.inline-redact { display:inline-block; vertical-align:baseline; font-family:"JetBrains Mono", monospace; background: var(--redact-bg); color: transparent; padding: 0 4px; border-radius: 3px; transition: background 160ms ease, color 160ms ease; }
+.inline-redact { display:inline-block; vertical-align:baseline; background: var(--redact-bg); color: transparent; padding: 0 4px; border-radius: 3px; transition: background 160ms ease, color 160ms ease; }
 .inline-redact:hover, .inline-redact:focus-visible { background: transparent; color: inherit; }
 
 .ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
