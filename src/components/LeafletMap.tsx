@@ -14,9 +14,8 @@ export default function LeafletMap() {
       attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    // If you have exact coords for Lusinyants 2, replace below.
-    // Approximate position near Lusinyants St, Yerevan.
-    const approx = [40.19292, 44.51835] as [number, number];
+    // Exact coords provided for map marker (Lusinyants 2, Yerevan)
+    const approx = [40.177911, 44.494903] as [number, number];
     const marker = L.marker(approx, {
       title: 'Ереван, ул. Лусинянц, 2 — частный театр «Артен»'
     }).addTo(map);
@@ -28,4 +27,3 @@ export default function LeafletMap() {
   });
   return <div id="map" ref={el} />;
 }
-

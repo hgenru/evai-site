@@ -142,9 +142,13 @@ html.evil-mode { --wm-accent: var(--accent-evil); --wm-pulse: var(--pulse-evil);
 
 .ticker { font-family: "JetBrains Mono", monospace; color: var(--muted); }
 .ticker[data-typing="true"]::after { content: '▋'; color: var(--lime); animation: blink 1s step-end infinite; margin-left: 2px; }
+/* different caret colors for variants */
+.ticker.init[data-typing="true"]::after { color: var(--lime); }
+.ticker.classified[data-typing="true"]::after { color: var(--pulse); }
+.ticker.location[data-typing="true"]::after { color: var(--accent); }
 @keyframes blink { 50%{opacity: 0} }
 /* Classified variant of ticker */
-.ticker.classified { color: inherit; text-transform: lowercase; }
+.ticker.classified { color: var(--muted); text-transform: lowercase; }
 .ticker.classified[data-typing="true"]::after { color: var(--lime); }
 
 .section { padding: 8px 0; }

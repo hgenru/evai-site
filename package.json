@@ -4,6 +4,9 @@
   "description": "",
   "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

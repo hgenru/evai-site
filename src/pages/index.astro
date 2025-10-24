@@ -29,7 +29,7 @@ const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
           <span class="headline-badge">BUBBLE</span>
         </div>
         <p class="lead">{lead}</p>
-        <div class="ticker" data-typing="true">{ticker}</div>
+    <div class="ticker init" data-typing="true">{ticker}</div>
         
       </div>
       <div class="hero-col right">
@@ -58,6 +58,7 @@ const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
           </div>
           <div class="eve-vignette" aria-hidden="true"></div>
           <img src="/siluettte.png" alt="Силуэт Евы" />
+          <div class="eve-overlay" aria-hidden="true"></div>
         </figure>
       </div>
     </div>
@@ -85,6 +86,7 @@ const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
   <section id="location" class="section container">
     <h2>Локация / Карта</h2>
     <p><strong>Ереван, улица Лусинянц, 2 — частный театр «<span class="inline-redact">Артен</span>»</strong><br/>Рядом с «Долма Молл», ~10 минут пешком.</p>
+    <div class="ticker location" data-typing="true">&gt; init arrival_window … don't be late</div>
     <div class="location-grid">
       <div class="map-col">
         <LeafletMap client:load />
@@ -109,22 +111,22 @@ const ticker = "> init eva_prelaunch … status: PENDING … clearance: L2";
     <code>build: eva-prelaunch-0.9.7 | scope: INTERNAL</code>
   </footer>
   <script>
-    // lightweight parallax for geometry field
-    const host = document.querySelector('.hero');
+    // Global parallax for geometry field (follow mouse softly)
     const field = document.getElementById('geoField');
     let raf;
     function onMove(e){
-      const rect = host.getBoundingClientRect();
-      const x = (e.clientX - rect.left)/rect.width - 0.5;
-      const y = (e.clientY - rect.top)/rect.height - 0.5;
+      const vw = Math.max(window.innerWidth, 1);
+      const vh = Math.max(window.innerHeight, 1);
+      const x = (e.clientX / vw) - 0.5;
+      const y = (e.clientY / vh) - 0.5;
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(()=>{
-        field?.style.setProperty('--mx', (x * 12) + 'px');
-        field?.style.setProperty('--my', (y * 12) + 'px');
+        field?.style.setProperty('--mx', (x * 18) + 'px');
+        field?.style.setProperty('--my', (y * 14) + 'px');
       });
     }
-    host?.addEventListener('mousemove', onMove, { passive: true });
-
+    window.addEventListener('mousemove', onMove, { passive: true });
+  
     // toggle EVIL colorway for wordmark on silhouette click
     const fig = document.querySelector('.eve-figure');
     fig?.addEventListener('click', () => {
